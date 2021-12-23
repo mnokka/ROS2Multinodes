@@ -5,6 +5,6 @@ POC to see how ROS2 operates when huge number of publisher and subscriber are in
 Fetch down to ROS2 workspace src directory and build: colcon build  
 
 
-start listener: ros2 run multinodes listener
+start listener: ros2 run multinodes  mylistener
 
-starte talker: ros2 run multinodes talker
+starte talker: ros2 run multinodes mytalker
