@@ -17,20 +17,24 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(talker src/publisher.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+# find the header files
+include_directories(includes)
+
+
+add_executable(mytalker src/publisher.cpp)
+ament_target_dependencies(mytalker rclcpp std_msgs)
 
 install(TARGETS
-  talker
+  mytalker
   DESTINATION lib/${PROJECT_NAME})
 
 
-add_executable(listener src/subscriber.cpp)
-ament_target_dependencies(listener rclcpp std_msgs)
+add_executable(mylistener src/subscriber.cpp)
+ament_target_dependencies(mylistener rclcpp std_msgs)
 
 install(TARGETS
-  talker
-  listener
+  mytalker
+  mylistener
   DESTINATION lib/${PROJECT_NAME})
 
 

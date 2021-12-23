@@ -22,35 +22,66 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
+//#include "subscriber.h"
+
 using std::placeholders::_1;
 
-class MinimalSubscriber : public rclcpp::Node
+class MySubscriber : public rclcpp::Node
 {
 public:
-  MinimalSubscriber()
-  : Node("minimal_subscriber"), counter(0)
+	MySubscriber()
+  : Node("minimal_subscriber")
   {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
+      "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
 
   }
 
+
+/*
+MySubscriber :: MySubscriber() : Node("minimal_subscriber")
+{
+
+  {
+    subscription_ = this->create_subscription<std_msgs::msg::String>(
+      "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
+
+  }
+
+
+
+
+ // void incrementer(void) {
+//  counter++;
+//}
+
+  //MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
+ // MySubscriber :: topic_callback(std_msgs::msg::String::ConstSharedPtr msg)
+
+  // incrementer();
+  //  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
+ // }
+  //rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
+ //int counter;
+*/
 private:
   void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
   {
 	//counter++;
-    RCLCPP_INFO(this->get_logger(), "  Noticed message: '%s'",msg->data.c_str());
+    RCLCPP_INFO(this->get_logger(), " Noticed message: '%s'",msg->data.c_str());
   }
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-  size_t counter;
 };
+
+
+
 
 
 
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalSubscriber>());
+  rclcpp::spin(std::make_shared<MySubscriber>());
   rclcpp::shutdown();
   return 0;
 }
