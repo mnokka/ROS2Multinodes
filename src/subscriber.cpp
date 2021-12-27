@@ -22,10 +22,12 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-//#include "subscriber.h"
+#include "subscriber.h"
 
 using std::placeholders::_1;
 
+
+/*
 class MySubscriber : public rclcpp::Node
 {
 public:
@@ -36,11 +38,11 @@ public:
       "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
 
   }
+*/
 
 
-/*
 MySubscriber :: MySubscriber() : Node("minimal_subscriber")
-{
+
 
   {
     subscription_ = this->create_subscription<std_msgs::msg::String>(
@@ -49,22 +51,23 @@ MySubscriber :: MySubscriber() : Node("minimal_subscriber")
   }
 
 
-
-
- // void incrementer(void) {
+//void MySubscriber::incrementer(void) {
 //  counter++;
 //}
 
+
   //MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
- // MySubscriber :: topic_callback(std_msgs::msg::String::ConstSharedPtr msg)
+void MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const {
 
   // incrementer();
-  //  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
+  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
  // }
   //rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
  //int counter;
-*/
-private:
+}
+
+
+/*private:
   void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
   {
 	//counter++;
@@ -72,7 +75,7 @@ private:
   }
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
 };
-
+*/
 
 
 
