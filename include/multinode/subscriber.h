@@ -1,5 +1,5 @@
-#ifndef SUBSCRIBER
-#define SUBSCRIBER
+#ifndef ROS2_MULTI_NODE_SUBSCRIBER_H
+#define ROS2_MULTI_NODE_SUBSCRIBER_H
 
 
 #include <functional>
@@ -8,25 +8,23 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-
+namespace multinode
+{
 class MySubscriber : public rclcpp::Node {
-
-
-
 public:
-  MySubscriber();
+  MySubscriber(const rclcpp::NodeOptions & options);
 
 private:
 
   void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const;
 
+  void incrementer();
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-  int counter=0;
-  void incrementer(void);
+  int counter_;
 
 };
 
 
-
+}
 
 #endif /* SUBSCRIBER */
