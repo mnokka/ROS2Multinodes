@@ -18,7 +18,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 # find the header files
-include_directories(includes)
+include_directories(include)
 
 
 add_executable(mytalker src/publisher.cpp)

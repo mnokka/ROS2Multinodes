@@ -13,27 +13,27 @@
 // limitations under the License.
 
 
-
-#include "publisher.h"
+#include "multinode/publisher.h"
 
 using namespace std::chrono_literals;
 
 /* This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
 
- MinimalPublisher :: MinimalPublisher() : Node("minimal_publisher"), count_(0)
-  {
-    publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
-    timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
-  }
+MinimalPublisher::MinimalPublisher()
+: Node("minimal_publisher"), count_(0)
+{
+  publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+  timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
+}
 
 void MinimalPublisher::timer_callback(void)
-  {
-	auto message = std_msgs::msg::String();
-    message.data = "Messaging messaging " + std::to_string(count_++);
-    RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
-    publisher_->publish(message);
-  }
+{
+  auto message = std_msgs::msg::String();
+  message.data = "Messaging messaging " + std::to_string(count_++);
+  RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+  publisher_->publish(message);
+}
 
 
 int main(int argc, char * argv[])
@@ -43,6 +43,3 @@ int main(int argc, char * argv[])
   rclcpp::shutdown();
   return 0;
 }
-
-
-

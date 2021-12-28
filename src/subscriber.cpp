@@ -13,7 +13,6 @@
 // limitations under the License.
 
 
-
 // from: https://docs.ros.org/en/rolling/Tutorials/Writing-A-Simple-Cpp-Service-And-Client.html
 
 /*#include <functional>
@@ -24,69 +23,45 @@
 */
 
 
-#include "subscriber.h"
+#include "multinode/subscriber.h"
+
+
+namespace multinode
+{
 
 using std::placeholders::_1;
 
-
-/*
-class MySubscriber : public rclcpp::Node
+MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
+: Node("minimal_subscriber", options), counter_(0)
 {
-public:
-	MySubscriber()
-  : Node("minimal_subscriber")
-  {
-    subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
+  subscription_ = this->create_subscription<std_msgs::msg::String>(
+    "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
 
-  }
-*/
-
-
-MySubscriber :: MySubscriber() : Node("minimal_subscriber")
-
-
-  {
-    subscription_ = this->create_subscription<std_msgs::msg::String>(
-      "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
-
-  }
-
-
-
-  //MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
-void MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const {
-
-  // incrementer();
-  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
- // }
-  //rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
- //int counter;
 }
 
 
-/*private:
-  void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
-  {
-	//counter++;
-    RCLCPP_INFO(this->get_logger(), " Noticed message: '%s'",msg->data.c_str());
-  }
-  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-};
-*/
+//MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
+void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
+{
+
+  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
+
+}
 
 
-//void MySubscriber :: incrementer(void) {
-//  counter++;
+void MySubscriber::incrementer(void)
+{
+  counter_++;
 
-//}
+}
 
-
-
+}
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MySubscriber>());
+  rclcpp::NodeOptions options;
+  auto subscriber_node = std::make_shared<multinode::MySubscriber>(options);
+  rclcpp::spin(subscriber_node);
   rclcpp::shutdown();
   return 0;
 }
