@@ -16,11 +16,13 @@
 
 // from: https://docs.ros.org/en/rolling/Tutorials/Writing-A-Simple-Cpp-Service-And-Client.html
 
-#include <functional>
+/*#include <functional>
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
+*/
+
 
 #include "subscriber.h"
 
@@ -51,10 +53,6 @@ MySubscriber :: MySubscriber() : Node("minimal_subscriber")
   }
 
 
-//void MySubscriber::incrementer(void) {
-//  counter++;
-//}
-
 
   //MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
 void MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const {
@@ -78,6 +76,10 @@ void MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr 
 */
 
 
+//void MySubscriber :: incrementer(void) {
+//  counter++;
+
+//}
 
 
 
