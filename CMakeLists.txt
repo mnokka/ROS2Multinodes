@@ -18,7 +18,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
 # find the header files
-include_directories(include)
+include_directories(include/multinode)
 
 
 add_executable(mytalker src/publisher.cpp)

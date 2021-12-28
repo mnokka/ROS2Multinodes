@@ -23,7 +23,7 @@
 */
 
 
-#include "multinode/subscriber.h"
+#include "subscriber.h"
 
 
 namespace multinode
@@ -44,7 +44,7 @@ MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
 void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
 {
 
-  RCLCPP_INFO(this->get_logger(), " xx Noticed message: '%s'", msg->data.c_str());
+  RCLCPP_INFO(this->get_logger(), " zzz xx Noticed message: '%s'", msg->data.c_str());
 
 }
 

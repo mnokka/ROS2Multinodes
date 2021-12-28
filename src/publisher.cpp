@@ -13,7 +13,7 @@
 // limitations under the License.
 
 
-#include "multinode/publisher.h"
+#include "publisher.h"
 
 using namespace std::chrono_literals;
 
@@ -31,7 +31,7 @@ void MinimalPublisher::timer_callback(void)
 {
   auto message = std_msgs::msg::String();
   message.data = "Messaging messaging " + std::to_string(count_++);
-  RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+  RCLCPP_INFO(this->get_logger(), "Pzzzublishing: '%s'", message.data.c_str());
   publisher_->publish(message);
 }
 
