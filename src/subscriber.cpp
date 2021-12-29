@@ -40,12 +40,14 @@ MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
 }
 
 
-//MySubscriber :: topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
-void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
+//void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
+// cant be conts-cont if calling function which modifies other data, compiler goes bonkers
+void MySubscriber::topic_callback( std_msgs::msg::String::ConstSharedPtr msg)
 {
 
   RCLCPP_INFO(this->get_logger(), "Listener Noticed message: '%s'", msg->data.c_str());
   RCLCPP_INFO(this->get_logger(), "Another info message line");
+  incrementer();
 }
 
 
@@ -59,7 +61,6 @@ void MySubscriber::incrementer(void)
   RCLCPP_INFO(this->get_logger(),"Counter value:" + counterstring );
   printf("testing printf usage\n");
 
-  // cout << "sdgf";
 }
 
 }

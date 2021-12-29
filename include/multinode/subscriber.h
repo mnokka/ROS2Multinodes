@@ -25,7 +25,9 @@ public:
 
 private:
 
-  void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const;
+  //void topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const;
+  // cant be conts-cont if calling function which modifies other data, compiler goes bonkers
+  void topic_callback(std_msgs::msg::String::ConstSharedPtr msg);
 
   void incrementer();
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
