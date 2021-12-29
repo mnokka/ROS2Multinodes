@@ -36,7 +36,7 @@ MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
 {
   subscription_ = this->create_subscription<std_msgs::msg::String>(
     "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
-
+  incrementer();
 }
 
 
@@ -44,14 +44,15 @@ MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
 void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr msg) const
 {
 
-  RCLCPP_INFO(this->get_logger(), " zzz xx Noticed message: '%s'", msg->data.c_str());
-
+  RCLCPP_INFO(this->get_logger(), "Listener Noticed message: '%s'", msg->data.c_str());
+  RCLCPP_INFO(this->get_logger(), "Another info message line");
 }
 
 
 void MySubscriber::incrementer(void)
 {
   counter_++;
+  RCLCPP_INFO(this->get_logger(),counterstring );
 
 }
 

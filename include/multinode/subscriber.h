@@ -8,6 +8,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
+#include <string.h>
+
+
 namespace multinode
 {
 class MySubscriber : public rclcpp::Node {
@@ -20,7 +23,8 @@ private:
 
   void incrementer();
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
-  int counter_;
+  int counter_=0;
+  std::string counterstring="kissa";
 
 };
 
