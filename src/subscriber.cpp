@@ -52,8 +52,14 @@ void MySubscriber::topic_callback(const std_msgs::msg::String::ConstSharedPtr ms
 void MySubscriber::incrementer(void)
 {
   counter_++;
-  RCLCPP_INFO(this->get_logger(),counterstring );
+  counterstring = std::to_string(counter_);
+  // std::string mystring="kettuu"; // works
+  //counterstring="pupunen";
+  //RCLCPP_INFO(this->get_logger(),mystring );
+  RCLCPP_INFO(this->get_logger(),"Counter value:" + counterstring );
+  printf("testing printf usage\n");
 
+  // cout << "sdgf";
 }
 
 }

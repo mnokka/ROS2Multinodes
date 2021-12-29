@@ -2,14 +2,20 @@
 #define ROS2_MULTI_NODE_SUBSCRIBER_H
 
 
+#include<iostream>
+
 #include <functional>
 #include <memory>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 
-#include <string.h>
+#include <string>
+#include <cinttypes>  // printf
+//#include <memory>
+//#include <unistd.h>
 
+using namespace std::chrono_literals;
 
 namespace multinode
 {
@@ -25,6 +31,8 @@ private:
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
   int counter_=0;
   std::string counterstring="kissa";
+ // stream mystream;
+
 
 };
 
