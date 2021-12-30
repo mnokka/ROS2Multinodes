@@ -24,6 +24,9 @@ include_directories(include/multinode)
 add_executable(mytalker src/publisher.cpp)
 ament_target_dependencies(mytalker rclcpp std_msgs)
 
+add_executable(mytalker2 src/publisher2.cpp)
+ament_target_dependencies(mytalker2 rclcpp std_msgs)
+
 install(TARGETS
   mytalker
   DESTINATION lib/${PROJECT_NAME})
@@ -32,8 +35,12 @@ install(TARGETS
 add_executable(mylistener src/subscriber.cpp)
 ament_target_dependencies(mylistener rclcpp std_msgs)
 
+
+
+
 install(TARGETS
   mytalker
+  mytalker2
   mylistener
   DESTINATION lib/${PROJECT_NAME})
 
