@@ -27,21 +27,26 @@ ament_target_dependencies(mytalker rclcpp std_msgs)
 add_executable(mytalker2 src/publisher2.cpp)
 ament_target_dependencies(mytalker2 rclcpp std_msgs)
 
-install(TARGETS
-  mytalker
-  DESTINATION lib/${PROJECT_NAME})
+#install(TARGETS
+#  mytalker
+#  DESTINATION lib/${PROJECT_NAME})
 
 
 add_executable(mylistener src/subscriber.cpp)
 ament_target_dependencies(mylistener rclcpp std_msgs)
 
+add_executable(mylistener2 src/subscriber2.cpp)
+ament_target_dependencies(mylistener2 rclcpp std_msgs)
 
-
+add_executable(mylistener3 src/subscriber3.cpp)
+ament_target_dependencies(mylistener3 rclcpp std_msgs)
 
 install(TARGETS
   mytalker
   mytalker2
   mylistener
+  mylistener2
+  mylistener3
   DESTINATION lib/${PROJECT_NAME})
 
 

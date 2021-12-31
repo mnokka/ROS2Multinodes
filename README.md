@@ -14,3 +14,7 @@ starte talker: <b>ros2 run multinodes mytalker</b> <br>
  execute **startnodes.sh**<br>
  script adds tabbed new terminals to current terminal for defined nodes
  
+ <br>
+ <br>
+ Node code replicated intentionally
+ 

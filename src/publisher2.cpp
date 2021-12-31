@@ -23,7 +23,7 @@ using namespace std::chrono_literals;
 MinimalPublisher::MinimalPublisher()
 : Node("minimal_publisher2"), count_(0)
 {
-  publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
+  publisher_ = this->create_publisher<std_msgs::msg::String>("topic2", 10);
   timer_ = this->create_wall_timer(500ms, std::bind(&MinimalPublisher::timer_callback, this));
 }
 
@@ -31,7 +31,7 @@ void MinimalPublisher::timer_callback(void)
 {
   auto message = std_msgs::msg::String();
   message.data = "Messaging messaging " + std::to_string(count_++);
-  RCLCPP_INFO(this->get_logger(), "Publishing message: '%s'", message.data.c_str());
+  RCLCPP_INFO(this->get_logger(), "Publisher 2: Publishing message: '%s'", message.data.c_str());
   publisher_->publish(message);
 }
 

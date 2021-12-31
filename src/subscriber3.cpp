@@ -32,10 +32,10 @@ namespace multinode
 using std::placeholders::_1;
 
 MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
-: Node("minimal_subscriber", options), counter_(0)
+: Node("minimal_subscriber2", options), counter_(0)
 {
   subscription_ = this->create_subscription<std_msgs::msg::String>(
-    "topic", 10, std::bind(&MySubscriber::topic_callback, this, _1));
+    "topic2", 10, std::bind(&MySubscriber::topic_callback, this, _1));
   incrementer();
 }
 
@@ -45,7 +45,7 @@ MySubscriber::MySubscriber(const rclcpp::NodeOptions & options)
 void MySubscriber::topic_callback( std_msgs::msg::String::ConstSharedPtr msg)
 {
 
-  RCLCPP_INFO(this->get_logger(), "First listener noticed message: '%s'", msg->data.c_str());
+  RCLCPP_INFO(this->get_logger(), "Listener3 noticed message: '%s'", msg->data.c_str());
   RCLCPP_INFO(this->get_logger(), "Another info message line");
   incrementer();
 }
