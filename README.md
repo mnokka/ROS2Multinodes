@@ -1,10 +1,16 @@
 # ROS2Multinodes
 POC to see how ROS2 operates when huge number of publisher and subscriber are introduced to Foxy
 
-
-Fetch down to ROS2 workspace src directory and build: colcon build  build --event-handlers console_direct+   (as verbose)
-
-
-start listener: ros2 run multinodes  mylistener
-
-starte talker: ros2 run multinodes mytalker
+<br>
+Fetch down to ROS2 workspace src directory and build: <b>colcon build  build --event-handlers console_direct+</b>  (as verbose)  <br>
+<br>
+Manual node starting:<br>
+start listener: <b>ros2 run multinodes mylistener</b><br>
+starte talker: <b>ros2 run multinodes mytalker</b> <br>
+ 
+ <br>
+  Script based node starting (Ubuntu):
+ 
+ execute **startnodes.sh**<br>
+ script adds tabbed new terminals to current terminal for defined nodes
+ 
