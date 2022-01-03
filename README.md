@@ -16,5 +16,5 @@ starte talker: <b>ros2 run multinodes mytalker</b> <br>
  
  <br>
  <br>
- Node code replicated intentionally. 
+ Node code replicated intentionally. ..
  
