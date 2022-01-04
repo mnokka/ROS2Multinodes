@@ -8,23 +8,32 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='multinodes',
-            namespace='publisher',
+            #namespace='publisher',
             executable='mytalker',
             name='publisher'
         ),
         Node(
             package='multinodes',
-            namespace='publisher2',
+            #namespace='publisher2',
             executable='mytalker2',
             name='publisher2'
-        )#,
-        #Node(
-        #    package='multinodes',
-        #    executable='mimic',
-        #    name='mimic',
-        #    remappings=[
-        #        ('/input/pose', '/turtlesim1/turtle1/pose'),
-        #        ('/output/cmd_vel', '/turtlesim2/turtle1/cmd_vel'),
-        #    ]
-        #)
+        ),
+             Node(
+            package='multinodes',
+           # namespace='listener',
+            executable='mylistener',
+            name='listener'
+        ),
+                  Node(
+            package='multinodes',
+          #  namespace='listener2',
+            executable='mylistener2',
+            name='listener2'
+        ),
+           Node(
+            package='multinodes',
+          #  namespace='listener3',
+            executable='mylistener3',
+            name='listener3'
+        ),
     ])
