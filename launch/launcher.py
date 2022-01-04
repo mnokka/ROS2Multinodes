@@ -1,7 +1,7 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-#execute  ros2 launch launcher.py
+#execute from main level:  ros2 launch multinodes launcher.py
 
 
 def generate_launch_description():
