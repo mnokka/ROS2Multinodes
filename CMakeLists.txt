@@ -17,6 +17,8 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
+find_package(example_interfaces REQUIRED)
+
 # find the header files
 include_directories(include/multinode)
 
@@ -41,12 +43,21 @@ ament_target_dependencies(mylistener2 rclcpp std_msgs)
 add_executable(mylistener3 src/subscriber3.cpp)
 ament_target_dependencies(mylistener3 rclcpp std_msgs)
 
+add_executable(adder_server src/adder_server.cpp)
+ament_target_dependencies(adder_server rclcpp example_interfaces)
+
+add_executable(adder_client src/adder_client.cpp)
+ament_target_dependencies(adder_client rclcpp example_interfaces)
+
+
 install(TARGETS
   mytalker
   mytalker2
   mylistener
   mylistener2
   mylistener3
+  adder_server
+  adder_client
   DESTINATION lib/${PROJECT_NAME})
 
 
@@ -57,10 +68,10 @@ install(TARGETS
 
 
 # Install launch files.
-#install(DIRECTORY
-#  launch
-#  DESTINATION share/${PROJECT_NAME}/
-#)
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
 
 
 ament_package()
