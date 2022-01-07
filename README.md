@@ -12,7 +12,16 @@ starte talker: <b>ros2 run multinodes mytalker</b> <br>
   Script based node starting (Ubuntu):
  
  execute **startnodes.sh**<br>
- script adds tabbed new terminals to current terminal for defined nodes
+ script adds tabbed new terminals to current terminal for defined nodes(publisher and suscribers)
+ 
+ <br>
+ 
+ Server Client example from ROS2 pages:<br>
+ 
+ Execute server(own shell): <b>ros2 run multinodes adder_server</b><br>
+ Excute client with one "query"(own shell):<b>ros2 run multinodes adder_client 4 5</b><br>
+ (Client should reply with sum of parameters, calculated by server)<br>
+ 
  
  <br>
  <br>
