@@ -44,8 +44,11 @@ add_executable(mylistener3 src/subscriber3.cpp)
 ament_target_dependencies(mylistener3 rclcpp std_msgs)
 
 add_executable(adder_server src/adder_server.cpp)
-ament_target_dependencies(adder_server
-rclcpp example_interfaces)
+ament_target_dependencies(adder_server rclcpp example_interfaces)
+
+add_executable(adder_client src/adder_client.cpp)
+ament_target_dependencies(adder_client rclcpp example_interfaces)
+
 
 install(TARGETS
   mytalker
@@ -54,6 +57,7 @@ install(TARGETS
   mylistener2
   mylistener3
   adder_server
+  adder_client
   DESTINATION lib/${PROJECT_NAME})
 
 
