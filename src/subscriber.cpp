@@ -55,10 +55,8 @@ void MySubscriber::incrementer(void)
 {
   counter_++;
   counterstring = std::to_string(counter_);
-  // std::string mystring="kettuu"; // works
-  //counterstring="pupunen";
-  //RCLCPP_INFO(this->get_logger(),mystring );
-  RCLCPP_INFO(this->get_logger(),"Counter value:" + counterstring );
+  std::string mystring="Counter value";
+  RCLCPP_INFO(this->get_logger(),(mystring+ counterstring).c_str() ); // some compiler complains as need to be  const char * format
   //printf("testing printf usage\n"); //works
 
 }
