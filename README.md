@@ -2,7 +2,7 @@
 POC to see how ROS2 operates when huge number of publisher and subscriber are introduced to Foxy
 
 <br>
-Fetch down to ROS2 workspace src directory and build: <b>colcon build  build --event-handlers console_direct+</b>  (as verbose)  <br>
+Fetch down to ROS2 workspace src directory and build: <b>colcon  build --event-handlers console_direct+</b>  (as verbose)  <br>
 <br>
 Manual node starting:<br>
 start listener: <b>ros2 run multinodes mylistener</b><br>
