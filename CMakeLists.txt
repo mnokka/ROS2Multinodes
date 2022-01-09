@@ -49,6 +49,9 @@ ament_target_dependencies(adder_server rclcpp example_interfaces)
 add_executable(adder_client src/adder_client.cpp)
 ament_target_dependencies(adder_client rclcpp example_interfaces)
 
+add_executable(parameter src/parameter.cpp)
+ament_target_dependencies(parameter rclcpp)
+
 
 install(TARGETS
   mytalker
@@ -58,6 +61,7 @@ install(TARGETS
   mylistener3
   adder_server
   adder_client
+  parameter
   DESTINATION lib/${PROJECT_NAME})
 
 
